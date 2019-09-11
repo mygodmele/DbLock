@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zk.dblock.DbLock">
+
+    <select id="getIdByAuthcode" parameterType="string" resultType="java.lang.Integer">
+        select id from auth_key where acc_key = #{authcode} for update;
+    </select>
+
+    <insert id="insertAuthcode" parameterType="string">
+        insert into auth_key (acc_key) values (#{authcode});
+    </insert>
+
+</mapper>
