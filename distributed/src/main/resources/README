@@ -1,9 +1,1 @@
-分布式环境下修改或添加需要保证幂等性，可以通过分布式锁来保证幂等性
-1、通过数据库锁来实现
-for update注意点：
-select id from auth_key where acc_key = 'code' for update;
-无主键或主键不明确情况下，执行table lock
-select acc_key from auth_key where id = 1 for update;
-明确指定主键情况下，执行row lock
 
-#连接池不够会触发 Deadlock found when trying to get lock; try restarting transaction 异常 ？
